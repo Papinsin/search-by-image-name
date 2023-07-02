@@ -1,0 +1,61 @@
+create key with value = EDv5gQRXcN848B3CyG8GLLkstq8SdL6cJPE8cq2BUfI
+
+step 2)  then we need to get:
+        - form
+        - #Search__input
+        - results
+        - show-more-btn
+        
+step 3 ) create variable pageNumbet value 1
+
+step 4 ) create asynchronous func searchImgfunc
+        create a variable wich get input value
+        
+        get in variable url meaning   let url =  `https://api.unsplash.com/search/photos?page=${pageNumber}&query=${inputValue}&client_id=${AKey}`
+
+        fetching the url then transform it for json format 
+
+
+        create new variable assign value of json with dotte .results 
+
+
+        make cheak 
+                if pageNumbet equal 1
+                        the searchResult innerHtml assign ""
+
+
+        then we work with array method
+        we take the result and forEach element add
+                create new equal wich copy search-result 
+
+                wrapperImg.src = result.urls.small
+        wrapperImg.alt = result.alt_description
+        let wrapperImgLink  = document.createElement("a")
+        wrapperImgLink.href = result.links.html 
+        wrapperImgLink.target = "_blank"
+        wrapperImgLink.textContent = result.alt_description
+
+        and ALL THESE variables for the variable wich copy ({results} search-result
+
+
+
+        pageNumber++
+                        
+        make a cheaker 
+                if pageNumber > 1 
+                        showMoreBtn.style.display = "block"
+
+
+
+       }
+
+
+make submit listiner for forEl 
+         event.preventDefault()
+        page = 1
+        searchResult.innerHTML = ""
+        searchImgfunc() 
+
+showMoreBtn.addEventListener("click" , () =>{
+    searchImgfunc()     
+})
